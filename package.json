@@ -1,0 +1,22 @@
+{
+  "name": "express_mvc_todolist_api_server",
+  "version": "1.0.0",
+  "description": "用MVC架構來設計Express專案",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hao0731/Express_MVC_TodoList_API_Server.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "HAO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hao0731/Express_MVC_TodoList_API_Server/issues"
+  },
+  "homepage": "https://github.com/hao0731/Express_MVC_TodoList_API_Server#readme"
+}
