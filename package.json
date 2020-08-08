@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/hao0731/Express_MVC_TodoList_API_Server/issues"
   },
-  "homepage": "https://github.com/hao0731/Express_MVC_TodoList_API_Server#readme"
+  "homepage": "https://github.com/hao0731/Express_MVC_TodoList_API_Server#readme",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
 }
