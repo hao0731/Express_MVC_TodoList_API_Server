@@ -50,6 +50,7 @@ router.get('/data/error/promise', errorHandler(async (req, res, next) => {
 }));
 
 router.post('/test', express.json(), (req, res, next) => {
+    console.log(req.body);
     res.send(JSON.stringify(req.body));
 });
 

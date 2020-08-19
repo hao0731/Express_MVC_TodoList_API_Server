@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/hao0731/Express_MVC_TodoList_API_Server#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.7",
     "@types/express": "^4.17.7",
     "@types/node": "^14.0.27",
     "nodemon": "^2.0.4",
@@ -29,6 +30,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
   }
