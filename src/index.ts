@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cors from 'cors';
+import helmet from 'helmet';
 import dotenv from 'dotenv';
 
 import appRoute from './app/app.routing';
@@ -10,6 +11,7 @@ const app = express();
 dotenv.config({ path: path.resolve(__dirname, `./environments/${ process.env.NODE_ENV }.env`) });
 
 app.use(cors());
+app.use(helmet());
 
 app.get('/', (req, res, next) => {
     res.send('Hello, World!!');
