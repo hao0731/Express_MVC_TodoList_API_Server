@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 
 import appRoute from './app/app.routing';
+import { Database } from './database';
 
 const app = express();
 
@@ -12,6 +13,8 @@ dotenv.config({ path: path.resolve(__dirname, `./environments/${ process.env.NOD
 
 app.use(cors());
 app.use(helmet());
+
+Database.connect();
 
 app.get('/', (req, res, next) => {
     res.send('Hello, World!!');
