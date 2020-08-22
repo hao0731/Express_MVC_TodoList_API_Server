@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 
 const DB_CONNECT_OPTIONS = {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 };
 
 export const Database = {
