@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 
 import { AppRoute } from './app.routing';
 
+import { Database } from './database';
+
 export class App {
 
     private app = express();
@@ -13,6 +15,8 @@ export class App {
 
     constructor() {
         this.setEnvironment();
+        this.setHelmet();
+        this.setCors();
         this.registerRoute();
     }
 
@@ -24,21 +28,26 @@ export class App {
         this.app.listen(process.env.PORT, () => console.log(`API Server is running at port ${ process.env.PORT }.`));
     }
 
-    public enableCors(): void {
-        this.app.use(cors());
-    }
-
-    public enableHelmet(): void {
-        this.app.use(helmet());
-    }
-
     public setException(handler: ErrorRequestHandler): void {
         this.app.use(handler);
+    }
+
+    public launchDatabase(): void {
+        const database = new Database();
+        database.connect();
     }
 
     // ====================================================================
     // @Private Methods
     // ====================================================================
+
+    private setHelmet(): void {
+        this.app.use(helmet());
+    }
+
+    private setCors(): void {
+        this.app.use(cors());
+    }
 
     private setEnvironment(): void {
         dotenv.config({ path: path.resolve(__dirname, `./environments/${ process.env.NODE_ENV }.env`) });

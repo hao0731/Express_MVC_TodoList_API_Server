@@ -1,3 +1,5 @@
+import express from 'express';
+
 import { RouteBase } from '../../../bases/route.base';
 import { TodoController } from './todo.controller';
 
@@ -15,7 +17,13 @@ export class TodoRoute extends RouteBase {
     }
 
     protected registerRoute(): void {
-        this.router.get('/', this.controller.getTodos);
+        this.router.route('/')
+            .get(this.controller.getTodos)
+            .post(express.json(), this.controller.addTodo);
+        this.router.route('/:id')
+            .get(this.controller.getTodo)
+            .delete(this.controller.removeTodo);
+        this.router.patch('/:id/completed', express.json(), this.controller.completedTodo);
     }
 
 }
