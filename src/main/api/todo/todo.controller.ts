@@ -10,7 +10,7 @@ import { HttpStatus } from '../../../types/response.type';
 
 export class TodoController extends ControllerBase {
 
-    public todoSvc = new TodoService();
+    private readonly todoSvc = new TodoService();
 
     public async getTodos(req: Request): Promise<ResponseObject> {
         const { limit, skip } = req.query;
