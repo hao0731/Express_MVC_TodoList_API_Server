@@ -24,7 +24,7 @@ export abstract class RouteBase {
         return (req: Request, res: Response, next: NextFunction) => {
             method.call(this.controller, req, res, next)
                 .then(obj => res.status(obj.status).json(obj))
-                .catch((err: Error) => next(controller.formatResponse(err.message, HttpStatus.INTERNAL_ERROR)));
+                .catch((err: Error) => next(controller.formatResponse(err.message, (err as any).status || HttpStatus.INTERNAL_ERROR)));
         };
     }
 

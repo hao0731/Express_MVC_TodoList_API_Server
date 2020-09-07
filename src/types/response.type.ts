@@ -6,6 +6,7 @@ export const enum HttpStatus {
     UNAUTHORIZED = 401,
     FORBIDDEN = 403,
     NOT_FOUND = 404,
+    CONFLICT = 409,
     UNPROCESSABLE = 422,
     INTERNAL_ERROR = 500
 };
