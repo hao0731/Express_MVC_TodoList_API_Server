@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-import JWT from 'jsonwebtoken';
 import { LocalAuthModel, LocalAuthDocument } from '../models/local-auth.model';
 
 export class LocalAuthRepository {
@@ -29,16 +28,6 @@ export class LocalAuthRepository {
         };
         const user = await LocalAuthModel.findOne(getCondition());
         return user;
-    }
-
-    public generateJWT(user: LocalAuthDocument): string {
-        const expiry = new Date();
-        expiry.setDate(expiry.getDate() + 7);
-        return JWT.sign({
-            _id: user._id,
-            username: user.username,
-            exp: expiry.getTime() / 1000
-        }, (process.env.JWT_SIGN as string));
     }
 
     public hashPassword(password: string, salt = crypto.randomBytes(16).toString('hex')): { salt: string, hash: string } {

@@ -1,5 +1,6 @@
 import passport from 'passport';
 import { Strategy, VerifyFunction } from 'passport-local';
+import JWT from 'jsonwebtoken';
 
 import { LocalAuthDocument } from '../../../models/local-auth.model';
 
@@ -30,7 +31,13 @@ export class LocalAuthService {
     }
 
     public generateJWT(user: LocalAuthDocument): string {
-        return this.localAuthRepo.generateJWT(user);
+        const expiry = new Date();
+        expiry.setDate(expiry.getDate() + 7);
+        return JWT.sign({
+            _id: user._id,
+            username: user.username,
+            exp: expiry.getTime() / 1000
+        }, (process.env.JWT_SIGN as string));
     }
 
     public authenticate(...args: any[]): Promise<string> {
