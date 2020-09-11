@@ -20,7 +20,7 @@ export abstract class RouteBase {
 
     protected abstract registerRoute(): void;
 
-    protected responseHandler(method: (req: Request, res: Response, next: NextFunction) => Promise<ResponseObject>, controller = this.controller) {
+    protected responseHandler(method: (req: Request, res: Response, next: NextFunction) => Promise<ResponseObject<any>>, controller = this.controller) {
         return (req: Request, res: Response, next: NextFunction) => {
             method.call(this.controller, req, res, next)
                 .then(obj => res.status(obj.status).json(obj))

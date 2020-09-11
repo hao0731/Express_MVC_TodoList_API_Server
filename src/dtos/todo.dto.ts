@@ -1,7 +1,7 @@
-import { DTOBase } from '../bases/dto.base';
+import { ResponseDTOBase } from '../bases/dto.base';
 import { TodoDocument } from '../models/todo.model';
 
-export class TodoDTO extends DTOBase {
+export class ResponseTodoDTO extends ResponseDTOBase {
 
     public readonly content!: string;
     public readonly completed!: boolean;
