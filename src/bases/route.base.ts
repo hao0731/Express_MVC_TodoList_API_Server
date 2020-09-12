@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { ControllerBase } from './controller.base';
+import { PipeBase } from './pipe.base';
 
 import { HttpStatus } from '../types/response.type';
 
@@ -19,6 +20,11 @@ export abstract class RouteBase {
     }
 
     protected abstract registerRoute(): void;
+
+    protected usePipe(prototype: any): any[] {
+        const pipe = new prototype();
+        return (pipe as PipeBase).transform();
+    }
 
     protected responseHandler(method: (req: Request, res: Response, next: NextFunction) => Promise<ResponseObject<any>>, controller = this.controller) {
         return (req: Request, res: Response, next: NextFunction) => {
