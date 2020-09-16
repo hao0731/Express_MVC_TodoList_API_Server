@@ -4,9 +4,10 @@
   "description": "用MVC架構來設計Express專案",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && NODE_ENV=production node ./dist/index.js",
-    "start:dev": "nodemon --exec NODE_ENV=development ts-node ./src/index.ts",
-    "build": "tsc"
+    "start": "NODE_ENV=production node ./dist/main.bundle.js",
+    "start:dev": "webpack --mode=development --watch",
+    "start:prod": "webpack --mode=production --watch",
+    "build": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,13 @@
     "@types/passport": "^1.0.4",
     "@types/passport-local": "^1.0.33",
     "nodemon": "^2.0.4",
+    "nodemon-webpack-plugin": "^4.3.2",
+    "ts-loader": "^8.0.3",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
     "cors": "^2.8.5",
